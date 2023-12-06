@@ -1,7 +1,11 @@
 from collections import deque
+import time
 
 def count_matches(winning_numbers, your_numbers):
     return len(winning_numbers.intersection(your_numbers))
+
+# Start timing
+start_time = time.time()
 
 with open("lotto.txt", "r") as file:
     lotto_cards = [line.strip() for line in file if line.strip()]
@@ -28,6 +32,10 @@ while queue:
             queue.append((next_card_index, lotto_cards[next_card_index]))
             total_cards += 1  # Count each new copy
 
-print(total_cards)
+# End timing
+end_time = time.time()
+
+print("Total cards:", total_cards)
+print("Time elapsed:", end_time - start_time)
 
 
